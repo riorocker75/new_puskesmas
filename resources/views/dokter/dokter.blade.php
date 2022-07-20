@@ -62,9 +62,65 @@
                 </table>
               </div>
          </div>  
-      </section>   
 
-</div>  
+
+         {{-- table dianosa --}}
+
+          <div class="card">
+            <div class="card-header">
+              Data Diagnosa
+            </div>
+              <div class="card-body">
+
+                <table id="table2" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nomor rekam</th>
+                    <th>Nama</th>
+                    <th>Tanggal</th>
+                    <th>Diagnosa</th>
+
+                    <th>Aksi</th>
+  
+                  </tr>
+                  </thead>
+                  <tbody>
+                    @php
+                        $diagnosa= App\Models\Diagnosa::orderBy('id','desc')->get()    
+                    @endphp
+                      <?php $no=1; ?>
+                      @foreach ($diagnosa as $ds)
+
+                      @php
+                          $rekam=App\Models\RekamMedis::where('kode_rekam',$ds->kode_rekam)->first();
+                          $pasien= App\Models\Pasien::where('no_rm',$rekam->no_rm)->first();
+                      @endphp
+                           <tr>
+                                <td>{{$no++}}</td>
+                                <td>{{$rekam->no_rm}}</td>
+                                <td>{{$pasien->nama}}
+                                  <br><label for="" class="badge badge-default">{{jenis_kelamin($pasien->jenis_kelamin)}}</label>
+                                </td>
+                                <td>{{format_tanggal(date('Y-m-d',strtotime($rekam->tanggal)))}}</td>
+                                <td><a  class="btn btn-default">Lihat diagnosa</a></td>
+
+                                <td>
+                                  <a href="{{url('/dashboard/dokter/rekam/edit/'.$ds->id.'')}}" class="btn btn-warning">Ubah</a>
+                                </td>
+  
+                            </tr>
+                      @endforeach
+                 
+                 
+                  </tbody>
+              
+                </table>
+              </div>
+         </div>
+         
+        </div>  
+      </section>   
 
 
 @endsection

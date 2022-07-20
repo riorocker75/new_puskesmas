@@ -66,10 +66,102 @@
                     <div class="card-body">
                         <p style="font-size:18px;font-weight:500">Subyektif</p>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Dokter Pemeriksa</label>
-                            <input type="text" class="form-control" name="dokter" required>
+                            <label for="">Keluhan Utama</label>
+                            <input type="text" class="form-control" name="keluhan" >
+                        </div>
+
+                         <div class="form-group">
+                            <label for="">Telahaan</label>
+                            <input type="text" class="form-control" name="telaah" >
+                        </div>
+
+                         <div class="form-group">
+                            <label for="">RPT</label>
+                            <input type="text" class="form-control" name="rpt" >
+                        </div>
+
+                         <div class="form-group">
+                            <label for="">RPO</label>
+                            <input type="text" class="form-control" name="rpo" >
+                        </div>
+
+                         <div class="form-group">
+                            <label for="">Riwayat Alergi</label>
+                            <input type="text" class="form-control" name="alergi" >
                         </div>
                         
+
+                        <br>
+                           <p style="font-size:18px;font-weight:500">Objektif</p>
+                           <span>a. Vital Sign</span>
+                           <div class="row">
+                            <div class="col-lg-3 col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="">TD</label>
+                                    <input type="text" class="form-control" name="td" >
+                                </div>
+
+                                
+                                <div class="form-group">
+                                  <label for="">HR</label>
+                                  <input type="text" class="form-control" name="hr" >
+                              </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-12">
+                                <div class="form-group">
+                                  <label for="">PR</label>
+                                  <input type="text" class="form-control" name="pr" >
+                              </div>
+                              <div class="form-group">
+                                  <label for="">T</label>
+                                  <input type="text" class="form-control" name="t" >
+                              </div>
+                            </div>
+
+                             <div class="col-lg-3 col-md-6 col-12">
+                                  <div class="form-group">
+                                      <label for="">BB</label>
+                                      <input type="text" class="form-control" name="bb" >
+                                  </div>
+                                  <div class="form-group">
+                                  <label for="">TB</label>
+                                  <input type="text" class="form-control" name="tb" >
+                              </div>
+                            </div>
+
+                             <div class="col-lg-3 col-md-6 col-12">
+                                  <div class="form-group">
+                                      <label for="">LP</label>
+                                      <input type="text" class="form-control" name="lp" >
+                                  </div>
+                            </div>
+
+                            
+                           </div>
+
+
+                         <div class="form-group">
+                            <label for="">Assement</label>
+                            <textarea name="assement" class="form-control"  cols="10" rows="2"></textarea>
+                        </div>
+
+                          <div class="form-group">
+                            <label for="">Planning</label>
+                            <textarea name="planning" class="form-control"  cols="10" rows="2"></textarea>
+                        </div>
+
+                          <div class="form-group">
+                            <label for="">Education</label>
+                            <textarea name="education" class="form-control"  cols="10" rows="2"></textarea>
+                        </div>
+
+                          <div class="form-group">
+                                  <label for="">Therapy</label>
+                                  <input type="text" class="form-control" name="terapi" >
+                              </div>
+                       
+                    <button type="submit" class="btn btn-primary float-right">Simpan</button>
+
                      
                     </div>
                </div> 
