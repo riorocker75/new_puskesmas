@@ -174,3 +174,4 @@ Route::post('/dashboard/dokter/rekam/act', [DokterCtrl::class,'rekam_act']);
 
 Route::get('/dashboard/dokter/rekam/edit/{id}', [DokterCtrl::class,'rekam_edit']);
 Route::post('/dashboard/dokter/rekam/update', [DokterCtrl::class,'rekam_update']);
+Route::get('/dashboard/dokter/rekam/cetak/{id}', [DokterCtrl::class,'rekam_cetak']);

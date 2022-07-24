@@ -107,6 +107,8 @@
 
                                 <td>
                                   <a href="{{url('/dashboard/dokter/rekam/edit/'.$ds->id.'')}}" class="btn btn-warning">Ubah</a>
+                                  <a href="{{url('/dashboard/dokter/rekam/cetak/'.$ds->id.'')}}" class="btn btn-default">Cetak</a>
+
                                 </td>
   
                             </tr>

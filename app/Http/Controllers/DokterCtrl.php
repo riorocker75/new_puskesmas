@@ -135,6 +135,12 @@ class DokterCtrl extends Controller
 
 
     }
+    function rekam_cetak($id){
+        $data= Diagnosa::where('id',$id)->get();
+        return view('cetak.cetak_rekam_diagnosa',[
+            'data' =>$data
+        ]);
+    }
 
 
 
