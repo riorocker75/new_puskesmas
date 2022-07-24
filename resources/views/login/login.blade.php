@@ -28,14 +28,11 @@
 <div class="login-box">
   <div style="text-align:center;margin:30px 0">
 
-    <img src="{{url('/logo/pancabudi.png')}}" style="width:120px;height:120px" alt="" srcset="">&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="{{url('/logo/logoAs.png')}}" style="width:120px;height:120px" alt="" srcset="">
+    
   </div>
 
- <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a  class="h1"><b>Selamat Datang</b></a>
-    </div>
+ <div class="card card-outline card-success">
+   
     <div class="card-body">
       <p class="login-box-msg">Sistem Informasi Puskesmas</p>
 
@@ -59,7 +56,7 @@
           </div>
         </div>
          <div >
-            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+            <button type="submit" class="btn btn-success btn-block">Masuk</button>
           </div>
       </form>
 

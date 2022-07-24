@@ -94,7 +94,44 @@ class DokterCtrl extends Controller
     }
 
     function rekam_update(Request $request){
+        $request->validate([
+            'no_rm' => 'required',
+        ]);
+        $id_diagnosis=$request->id_diagnosa;
+        $id_rekam=$request->id_rekam;
 
+       $kode_rekam=mt_rand(100000, 999999);
+
+        RekamMedis::where('id',$id_rekam)->update([
+            'kode_rekam'=> $kode_rekam,
+            'no_rm' => $request->no_rm,
+            'dokter' => $request->dokter,
+            'tanggal' => $request->tanggal,
+            'tindakan' => $request->tindakan,
+        ]);
+        Diagnosa::where('id',$id_diagnosis)->update([
+            'kode_rekam'=> $kode_rekam,
+            'keluhan' => $request->keluhan,
+            'telaah' => $request->telaah,
+            'rpt' => $request->rpt,
+            'rpo' => $request->rpo,
+            'alergi' => $request->alergi,
+
+            'td' => $request->td,
+            'pr' => $request->pr,
+            'bb' => $request->bb,
+            'lp' => $request->lp,
+            'hr' => $request->hr,
+            't' => $request->t,
+            'tb' => $request->tb,
+
+            'assement' => $request->assement,
+            'planing' => $request->planning,
+            'education' => $request->education,
+            'terapi' => $request->terapi,
+
+        ]);
+        return redirect('/dashboard/dokter')->with('alert-success','Data tersimpan');
 
 
     }

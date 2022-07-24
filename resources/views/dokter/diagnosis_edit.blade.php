@@ -42,7 +42,9 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nomor Rekam</label>
-                            <input type="text" class="form-control" name="no_rm" value="{{$dt->no_rm}}" required>
+                            <input type="text" class="form-control" name="no_rm" value="{{$rekam_medis->no_rm}}" required>
+                            <input type="hidden" class="form-control" name="id_rekam" value="{{$rekam_medis->id}}" required>
+
                         </div>
                        <div class="form-group">
                           <label for="exampleInputEmail1">Dokter Pemeriksa</label>
@@ -72,6 +74,8 @@
                         <div class="form-group">
                             <label for="">Keluhan Utama</label>
                             <input type="text" class="form-control" name="keluhan" value="{{$dt->keluhan}}" >
+                            <input type="hidden" class="form-control" name="id_diagnosa" value="{{$dt->id}}" >
+
                         </div>
 
                          <div class="form-group">
@@ -161,7 +165,7 @@
 
                           <div class="form-group">
                                   <label for="">Therapy</label>
-                                  <input type="text" class="form-control" name="terapi" {{$dt->terapi}}>
+                                  <input type="text" class="form-control" name="terapi" value="{{$dt->terapi}}">
                               </div>
                        
                     <button type="submit" class="btn btn-primary float-right">Simpan</button>
