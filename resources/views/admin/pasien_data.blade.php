@@ -28,7 +28,7 @@
               <div class="card-header">
                 <h3 class="card-title">Data semua Pasien</h3>
                 <div class="float-right">
-                  <a href="{{url('/daftar/pasien')}}" class="btn btn-primary">Daftar pasien</a>
+                  {{-- <a href="{{url('/daftar/pasien')}}" class="btn btn-primary">Daftar pasien</a> --}}
                 </div>
               </div>
               <!-- /.card-header -->
