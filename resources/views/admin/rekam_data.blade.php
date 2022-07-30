@@ -23,77 +23,170 @@
     <section class="content">
   
       <div class="container-fluid">
-         <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Data semua Rekam Medis</h3>
-                <div class="float-right">
-                    <a href="{{url('/dashboard/rekam/add')}}" class="btn btn-primary">Tambah Rekam</a>
-                </div>
-              </div>
-              <!-- /.card-header -->
+          <div class="card">
+            <div class="card-header">
+              Data Diagnosa
+            </div>
               <div class="card-body">
-                <table id="table1" class="table table-bordered table-striped">
+
+                <table id="table2" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama Paisen</th>
-                    <th>NIK</th>
-                    <th>Poli & Dokter</th>
-                    <th>Jenis Berobat</th>
+                    <th>Nomor rekam</th>
+                    <th>Nama</th>
+                    <th>Tanggal</th>
                     <th>Diagnosa</th>
 
-                    <th>Tanggal</th>
-                    <th>Status Rujuk</th>
-
-                    <th>Atur</th>
+                    <th>Aksi</th>
+  
                   </tr>
                   </thead>
                   <tbody>
-                     
+                    @php
+                        $diagnosa= App\Models\Diagnosa::orderBy('id','desc')->get()    
+                    @endphp
                       <?php $no=1; ?>
-                      @foreach ($data as $dt)
+                      @foreach ($diagnosa as $ds)
 
-                        @php
-                            $pasien=App\Models\Pasien::where('id',$dt->id_pasien)->first();
-                            $poli=App\Models\Poli::where('id',$dt->id_poli)->first();
-                            $pegawai=App\Models\Pegawai::where('id',$dt->petugas)->first();
-                            $dokter=App\Models\Dokter::where('id',$dt->id_dokter)->first();
-                        @endphp
-
+                      @php
+                          $rekam=App\Models\RekamMedis::where('kode_rekam',$ds->kode_rekam)->first();
+                          $pasien= App\Models\Pasien::where('no_rm',$rekam->no_rm)->first();
+                      @endphp
                            <tr>
                                 <td>{{$no++}}</td>
-                               
-                               
-                                  <td>{{$pasien->nama}}</td>
-                                  <td>{{$pasien->nik}}</td>
-
-                                  <td>{{$poli->prosedur}}
-                                  <br> {{$dokter->nama}}
-                                  </td>
-                                  <td>{{jenis_kartu($dt->kartu_berobat)}} </td>
-                                  <td>{{$dt->diagnosa}}</td>
-                              
-
-                             
-                                <td>Tanggal Masuk: {{format_tanggal(date('Y-m-d',strtotime($dt->tanggal)))}}
-                                <br>Tanggal Keluar:  {{format_tanggal(date('Y-m-d',strtotime($dt->tanggal_keluar)))}}
+                                <td>{{$rekam->no_rm}}</td>
+                                <td>{{$pasien->nama}}
+                                  <br><label for="" class="badge badge-default">{{jenis_kelamin($pasien->jenis_kelamin)}}</label>
                                 </td>
-
-                                <td>{{status_rujuk($dt->status_rujuk)}}</td>
-
+                                <td>{{format_tanggal(date('Y-m-d',strtotime($rekam->tanggal)))}}</td>
+                                <td><a data-toggle="modal" data-target="#modalDiagnosa-{{$ds->id}}" class="btn btn-default">Lihat diagnosa</a></td>
 
                                 <td>
-                                  @if ($dt->status_rujuk == 0)
-                                      
-                                    <a href="{{url('/dashboard/rekam/kwitansi/'.$dt->id.'')}}"  class="btn btn-sm btn-default">Cetak</a>
-                                  @else
-                                    <a href="{{url('/dashboard/rekam/surat/'.$dt->kode_rekam.'')}}"  class="btn btn-sm btn-default">Cetak</a>
+                                  <a href="{{url('/dashboard/rekam/edit/'.$ds->id.'')}}" class="btn btn-warning">Ubah</a>
+                                  {{-- <a href="{{url('/dashboard/dokter/rekam/cetak/'.$ds->id.'')}}" class="btn btn-default">Cetak</a> --}}
+                                  <a href="{{url('/dashboard/rekam/delete/'.$ds->id.'')}}" class="btn btn-danger">Hapus</a>
 
-                                  @endif
-                                <a href="{{url('/dashboard/rekam/edit/'.$dt->id.'')}}" class="btn btn-sm btn-warning">Ubah</a>
-                                {{-- <a href="{{url('/dashboard/rekam/delete/'.$dt->id.'')}}" class="btn btn-sm btn-danger">Hapus</a> --}}
                                 </td>
+  
                             </tr>
+
+
+                                   <!-- Modal -->
+                                  <div class="modal fade" id="modalDiagnosa-{{$ds->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Diagnosis {{$rekam->no_rm}}</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            
+                                            <p style="font-size:18px;font-weight:500">Subyektif</p>
+                                            <div class="form-group">
+                                                <label for="">Keluhan Utama</label>
+                                                <input type="text" class="form-control" name="keluhan" value="{{$ds->keluhan}}" disabled>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Telahaan</label>
+                                                <input type="text" class="form-control" name="telaah" value="{{$ds->telaah}}" disabled>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">RPT</label>
+                                                <input type="text" class="form-control" name="rpt" value="{{$ds->rpt}}" disabled>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">RPO</label>
+                                                <input type="text" class="form-control" name="rpo" value="{{$ds->rpo}}" disabled>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Riwayat Alergi</label>
+                                                <input type="text" class="form-control" name="alergi" value="{{$ds->alergi}}" disabled>
+                                            </div>
+                                            
+
+                                            <br>
+                                              <p style="font-size:18px;font-weight:500">Objektif</p>
+                                              <span>a. Vital Sign</span>
+                                              <div class="row">
+                                                <div class="col-lg-3 col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="">TD</label>
+                                                        <input type="text" class="form-control" name="td" value="{{$ds->td}}" disabled>
+                                                    </div>
+
+                                                    
+                                                    <div class="form-group">
+                                                      <label for="">HR</label>
+                                                      <input type="text" class="form-control" name="hr" value="{{$ds->hr}}" disabled>
+                                                  </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6 col-12">
+                                                    <div class="form-group">
+                                                      <label for="">PR</label>
+                                                      <input type="text" class="form-control" name="pr" value="{{$ds->pr}}" disabled>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label for="">T</label>
+                                                      <input type="text" class="form-control" name="t" value="{{$ds->t}}" disabled>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-md-6 col-12">
+                                                      <div class="form-group">
+                                                          <label for="">BB</label>
+                                                          <input type="text" class="form-control" name="bb" value="{{$ds->bb}}" disabled>
+                                                      </div>
+                                                      <div class="form-group">
+                                                      <label for="">TB</label>
+                                                      <input type="text" class="form-control" name="tb" value="{{$ds->tb}}" disabled>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-md-6 col-12">
+                                                      <div class="form-group">
+                                                          <label for="">LP</label>
+                                                          <input type="text" class="form-control" name="lp" value="{{$ds->lp}}" disabled>
+                                                      </div>
+                                                </div>
+
+                                                
+                                              </div>
+
+
+                                            <div class="form-group">
+                                                <label for="">Assement</label>
+                                                <textarea name="assement" class="form-control"  cols="10" rows="2" disabled>{{$ds->assement}}</textarea>
+                                            </div>
+
+                                              <div class="form-group">
+                                                <label for="">Planning</label>
+                                                <textarea name="planning" class="form-control"  cols="10" rows="2" disabled>{{$ds->planing}}</textarea>
+                                            </div>
+
+                                              <div class="form-group">
+                                                <label for="">Education</label>
+                                                <textarea name="education" class="form-control"  cols="10" rows="2" disabled>{{$ds->education}}</textarea>
+                                            </div>
+
+                                              <div class="form-group">
+                                                      <label for="">Therapy</label>
+                                                      <input type="text" class="form-control" name="terapi" value="{{$ds->terapi}}" disabled>
+                                                  </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
                       @endforeach
                  
                  
@@ -101,10 +194,8 @@
               
                 </table>
               </div>
-              <!-- /.card-body -->
-      </section>   
-
-</div>  
+            </section>   
+            </div>  
 
 
 @endsection

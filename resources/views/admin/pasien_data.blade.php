@@ -39,7 +39,6 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>NIK</th>
-                    <th>Jenis Berobat</th>
                     <th>Tanggal registrasi</th>
                     <th>Edit</th>
                   </tr>
@@ -51,7 +50,6 @@
                                 <td>{{$no++}}</td>
                                 <td>{{$dt->nama}}</td>
                                 <td>{{$dt->nik}} </td>
-                                <td>{{jenis_kartu($dt->kartu_berobat)}} </td>
                                 <td>{{format_tanggal(date('Y-m-d',strtotime($dt->tgl_registrasi)))}}</td>
                                 <td>
                                     <a href="{{url('/dashboard/pasien/edit/'.$dt->id.'')}}" class="btn btn-warning">Ubah</a>

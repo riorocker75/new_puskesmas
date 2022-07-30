@@ -102,12 +102,12 @@
                   <p>Data Pegawai</p>
                 </a>
               </li> -->
-                 <li class="nav-item">
+                 {{-- <li class="nav-item">
                 <a href="{{url('/dashboard/poli/data')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Poli</p>
                 </a>
-              </li>
+              </li> --}}
                  <li class="nav-item">
                 <a href="{{url('/dashboard/rekam/data')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -121,12 +121,12 @@
                 </a>
               </li> -->
 
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="{{url('/dashboard/kunjungan/data')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Kunjungan Pasien</p>
                 </a>
-              </li>
+              </li> --}}
 
                 <li class="nav-item">
                 <a href="{{url('/dashboard/role/data')}}" class="nav-link">

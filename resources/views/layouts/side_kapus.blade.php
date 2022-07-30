@@ -76,10 +76,10 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
         <li class="nav-item">
-            <a href="{{url('/kapus/pasien')}}" class="nav-link">
+            <a href="{{url('/kapus/rekam/medis')}}" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
-                Pasien
+                Data Rekam Medis
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
@@ -88,24 +88,6 @@
           
 
 
-              <li class="nav-item">
-            <a href="{{url('/kapus/kunjungan')}}" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Kunjungan Pasien
-                {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-            </a>
-          </li>
-{{-- 
-            <li class="nav-item">
-            <a href="{{url('/kapus/poli')}}" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Poli
-              </p>
-            </a>
-          </li> --}}
 
           
 

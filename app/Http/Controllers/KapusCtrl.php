@@ -16,13 +16,11 @@ use App\Models\Rekam;
 use App\Models\Rujukan;
 use App\Models\RekamMedis;
 
-use App\Models\Kwitansi;
-use App\Models\Pegawai;
+use App\Models\Diagnosa;
 use App\Models\Poli;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Dokter;
-
 class KapusCtrl extends Controller
 {
   	public function __construct()
@@ -122,6 +120,13 @@ class KapusCtrl extends Controller
             ]);
         } 
 
+        function cetak_rekam($id){
+            $data= Diagnosa::where('id',$id)->get();
+            return view('cetak.cetak_rekam_diagnosa',[
+                'data' =>$data
+            ]);
+        }
+
 
     function pengaturan(){
         $username= Session::get('kp_username');
@@ -130,6 +135,13 @@ class KapusCtrl extends Controller
             'data'=> $data
         ]);
 
+    }
+
+    function pasien_view($id){
+           $data = Pasien::where('id',$id)->get();
+        return view('kepala.pasien_lihat',[
+            'data' =>$data
+        ]);
     }
 
      function pengaturan_update(Request $request){

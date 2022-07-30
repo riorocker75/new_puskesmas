@@ -238,47 +238,7 @@
         </div>
    </div>
 
-   <div class="row">
-        <div class="col-lg-6 col-md-6 col-6">
-             <p>
-                RIWAYAT PENYAKIT TERDAHULU
-            </p>
-        </div>
-        <div class="col-lg-6 col-md-6 col-6">
-              <p style="text-transform:uppercase">
-           : 
-                
-            </p>
-        </div>
-   </div>
-
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-6">
-             <p>
-                RIWAYAT PENYAKIT KELUARGA
-            </p>
-        </div>
-        <div class="col-lg-6 col-md-6 col-6">
-              <p style="text-transform:uppercase">
-           : 
-                
-            </p>
-        </div>
-   </div>
-
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-6">
-             <p>
-                RIWAYAT PEMAKAIAN OBAT
-            </p>
-        </div>
-        <div class="col-lg-6 col-md-6 col-6">
-              <p style="text-transform:uppercase">
-           : 
-                
-            </p>
-        </div>
-   </div>
+   
 
       <div class="row">
         <div class="col-lg-6 col-md-6 col-6">
@@ -321,31 +281,26 @@
 			
             <tr>
 					
-                 <td></td>
+                 <td>{{format_tanggal(date('Y-m-d',strtotime($rekam->tanggal)))}}</td>
                 <td>
                     <p style="font-weight:700">KU:</p>
                    
                     <br>
                     <p style="font-weight:700; text-decoration-line: underline;">VITAL SIGN:</p>
-                     <span>TD: </span> <br>
-                     <span>HR: </span> <br>
-                     <span>RR:  </span> <br>
-                     <span>TEMP:  </span> <br>
-                     <span>RPS:  </span> <br><br>
-
-                      <p style="font-weight:700; text-decoration-line: underline;">LAB:</p>
-                     <span>SIPILIS: </span> <br>
-                     <span>HIV: </span> <br>
-                     <span>HBAS:  </span> <br>
-                     <span>GOLDA:  </span> <br>
-                     <span>HB:  </span> <br>
+                     <span>TD: {{$diagnosa->td}}</span> <br>
+                     <span>PR: {{$diagnosa->pr}}</span> <br>
+                     <span>BB:  {{$diagnosa->bb}}</span> <br>
+                     <span>LP:  {{$diagnosa->lp}}</span> <br>
+                     <span>HR:  {{$diagnosa->hr}}</span> <br><br>
+                     <span>T:  {{$diagnosa->t}}</span> <br>
+                     <span>TB:  {{$diagnosa->tb}}</span> <br>
 
 
                 
                 </td>
                 <td></td>
-                <td></td>
-                <td></td>
+                <td>{{$diagnosa->planing}}</td>
+                <td>{{$diagnosa->terapi}}</td>
                 <td></td>
 			
             </tr>  

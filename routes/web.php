@@ -115,6 +115,10 @@ Route::post('/ajax/cek_rujuk', [AdminCtrl::class,'cek_rujuk']);
 Route::get('/dashboard/kapus', [KapusCtrl::class,'index']);
 Route::get('/kapus/pasien', [KapusCtrl::class,'pasien']);
 Route::get('/kapus/cetak/pasien', [KapusCtrl::class,'cetak_pasien']);
+Route::get('/kapus/cetak/rekam/{id}', [KapusCtrl::class,'cetak_rekam']);
+Route::get('/kapus/rekam/pasien/{id}', [KapusCtrl::class,'pasien_view']);
+
+
 
 // pegwai
 Route::get('/kapus/pegawai', [KapusCtrl::class,'pegawai']);
