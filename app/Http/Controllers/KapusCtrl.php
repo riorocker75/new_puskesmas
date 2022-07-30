@@ -158,7 +158,9 @@ class KapusCtrl extends Controller
 
     }
 
-
+function rekam_data(){
+    return view('kepala.rekam_data');
+}
 
 
 }

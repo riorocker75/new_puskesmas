@@ -117,6 +117,7 @@ Route::get('/kapus/pasien', [KapusCtrl::class,'pasien']);
 Route::get('/kapus/cetak/pasien', [KapusCtrl::class,'cetak_pasien']);
 Route::get('/kapus/cetak/rekam/{id}', [KapusCtrl::class,'cetak_rekam']);
 Route::get('/kapus/rekam/pasien/{id}', [KapusCtrl::class,'pasien_view']);
+Route::get('/kapus/rekam/medis', [KapusCtrl::class,'rekam_data']);
 
 
 
