@@ -19,6 +19,8 @@ use App\Http\Controllers\PasienCtrl;
 use App\Http\Controllers\KapusCtrl;
 use App\Http\Controllers\LoginCtrl;
 use App\Http\Controllers\DokterCtrl;
+use App\Http\Controllers\AptkCtrl;
+
 
 
 
@@ -118,6 +120,12 @@ Route::get('/kapus/cetak/pasien', [KapusCtrl::class,'cetak_pasien']);
 Route::get('/kapus/cetak/rekam/{id}', [KapusCtrl::class,'cetak_rekam']);
 Route::get('/kapus/rekam/pasien/{id}', [KapusCtrl::class,'pasien_view']);
 Route::get('/kapus/rekam/medis', [KapusCtrl::class,'rekam_data']);
+
+// bagian apoteker
+
+Route::get('/dashboard/apoteker', [AptkCtrl::class,'index']);
+Route::get('/apoteker/cetak/resep/{id}', [AptkCtrl::class,'cetak_resep']);
+Route::post('/apoteker/resep/update', [AptkCtrl::class,'resep_update']);
 
 
 

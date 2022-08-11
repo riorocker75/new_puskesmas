@@ -157,7 +157,8 @@
 
                           <div class="form-group">
                                   <label for="">Therapy</label>
-                                  <input type="text" class="form-control" name="terapi" >
+                                  <textarea name="terapi" id="summernote" cols="30" rows="10"></textarea>
+                                  {{-- <input type="text" class="form-control" name="terapi" > --}}
                               </div>
                        
                     <button type="submit" class="btn btn-primary float-right">Simpan</button>

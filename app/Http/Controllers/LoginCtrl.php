@@ -67,7 +67,19 @@ class LoginCtrl extends Controller
                 }else{
                     return redirect('/login')->with('alert-danger','Password atau Email, Salah !');
                 }
-            }   
+            }
+            elseif($data->level == "4"){
+            Session::flush();
+            
+                if(Hash::check($password,$data->password)){
+                    Session::put('ap_username', $data->username);
+                    Session::put('level', 4);
+                    Session::put('login-ap',TRUE);
+                    return redirect('/dashboard/apoteker')->with('alert-success','Selamat Datang Kembali');
+                }else{
+                    return redirect('/login')->with('alert-danger','Password atau Email, Salah !');
+                }
+            }     
 
         }else{
             return redirect('/login')->with('alert-danger','Password atau Email, Salah !');

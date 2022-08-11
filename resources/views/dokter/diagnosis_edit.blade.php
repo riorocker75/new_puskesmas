@@ -165,7 +165,7 @@
 
                           <div class="form-group">
                                   <label for="">Therapy</label>
-                                  <input type="text" class="form-control" name="terapi" value="{{$dt->terapi}}">
+                                  <textarea name="terapi" id="summernote" cols="30" rows="10">{!!$dt->terapi!!}</textarea>
                               </div>
                        
                     <button type="submit" class="btn btn-primary float-right">Simpan</button>

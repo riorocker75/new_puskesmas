@@ -595,9 +595,11 @@ function cetak_rujukan($id){
     $cek_admin=Admin::where('level',1)->count();
     $cek_kapus=Admin::where('level',2)->count();
     $cek_dokter=Admin::where('level',3)->count();
+    $cek_apoteker=Admin::where('level',4)->count();
 
 
-    if($cek_admin < 3 || $cek_kapus < 1 || $cek_dokter < 1 ){
+
+    if($cek_admin < 3 || $cek_kapus < 1 || $cek_dokter < 1 || $cek_apoteker < 2){
         if($request->role == 1){
             Admin::insert([
                 'username' => $request->username,
@@ -621,6 +623,15 @@ function cetak_rujukan($id){
              'username' => $request->username,
             'password' => bcrypt($request->password),
             'level' => 3,
+            'status' => 1
+        ]);
+     return redirect('/dashboard/role/data')->with('alert-success','data telah berhasil ditambahkan');
+
+    }elseif($request->role == 4){
+        Admin::insert([
+             'username' => $request->username,
+            'password' => bcrypt($request->password),
+            'level' => 4,
             'status' => 1
         ]);
      return redirect('/dashboard/role/data')->with('alert-success','data telah berhasil ditambahkan');

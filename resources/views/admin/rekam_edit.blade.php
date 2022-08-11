@@ -26,7 +26,7 @@
       <div class="container-fluid">
         @foreach($data as $dt)
 
-          <form action="{{ url('dashboard/rekam/update') }}" method="post">
+          <form action="" method="post">
         <div class="row">
                 @csrf  
                 @method('POST')
@@ -85,7 +85,7 @@
 
                          <div class="form-group">
                             <label for="">RPT</label>
-                            <input type="text" class="form-control" name="rpt" value="{{$dt->rpt}}">
+                            <input type="text" data-toggle="tooltip" data-placement="top" title="Tooltip on top" class="form-control" name="rpt" value="{{$dt->rpt}}" >
                         </div>
 
                          <div class="form-group">
@@ -165,10 +165,9 @@
 
                           <div class="form-group">
                                   <label for="">Therapy</label>
-                                  <input type="text" class="form-control" name="terapi" value="{{$dt->terapi}}">
+                                  {!!$dt->terapi!!}
                               </div>
                        
-                    <button type="submit" class="btn btn-primary float-right">Simpan</button>
 
                      
                     </div>

@@ -2,7 +2,7 @@
 @section('content')
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+  <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -25,48 +25,6 @@
   
       <div class="container-fluid">
          <div class="card">
-              <div class="card-body">
-
-                <table id="table1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Nomor rekam</th>
-                    <th>Nama</th>
-                    <th>Aksi</th>
-  
-                  </tr>
-                  </thead>
-                  <tbody>
-                    @php
-                        $pasien= App\Models\Pasien::orderBy('id','desc')->get()    
-                    @endphp
-                      <?php $no=1; ?>
-                      @foreach ($pasien as $dt)
-                           <tr>
-                                <td>{{$no++}}</td>
-                                <td>{{$dt->no_rm}}</td>
-                                <td>{{$dt->nama}}
-                                  <br><label for="" class="badge badge-default">{{jenis_kelamin($dt->jenis_kelamin)}}</label>
-                                </td>
-                                <td>
-                                  <a href="{{url('/dashboard/dokter/rekam/add/'.$dt->id.'')}}" class="btn btn-warning">Tambah Rekam Medis</a>
-                                </td>
-  
-                            </tr>
-                      @endforeach
-                 
-                 
-                  </tbody>
-              
-                </table>
-              </div>
-         </div>  
-
-
-         {{-- table dianosa --}}
-
-          <div class="card">
             <div class="card-header">
               Data Diagnosa
             </div>
@@ -106,8 +64,10 @@
                                 <td><a data-toggle="modal" data-target="#modalDiagnosa-{{$ds->id}}" class="btn btn-default">Lihat diagnosa</a></td>
 
                                 <td>
-                                  <a href="{{url('/dashboard/dokter/rekam/edit/'.$ds->id.'')}}" class="btn btn-warning">Ubah</a>
-                                  {{-- <a href="{{url('/dashboard/dokter/rekam/cetak/'.$ds->id.'')}}" class="btn btn-default">Cetak</a> --}}
+                                  {{-- <a href="{{url('/dashboard/dokter/rekam/edit/'.$ds->id.'')}}" class="btn btn-warning">Ubah</a> --}}
+                                  {{-- <a href="{{url('/kapus/rekam/pasien/'.$ds->id.'')}}" class="btn btn-primary">Lihat Pasien</a> --}}
+
+                                  <a href="{{url('/apoteker/cetak/resep/'.$ds->id.'')}}" class="btn btn-default">Cetak</a>
 
                                 </td>
   
@@ -124,6 +84,8 @@
                                             <span aria-hidden="true">&times;</span>
                                           </button>
                                         </div>
+                                        <form action="{{ url('/apoteker/resep/update') }}" method="post">
+                                            @csrf
                                         <div class="modal-body">
                                             
                                             <p style="font-size:18px;font-weight:500">Subyektif</p>
@@ -218,13 +180,17 @@
                                             </div>
 
                                               <div class="form-group">
-                                                      <label for="">Therapy</label><br>
-                                                     {!! $ds->terapi !!}
+                                                      <label for="">Therapy</label>
+                                                      <input type="hidden" name="id" value="{{$ds->id}}">
+                                                      <textarea name="terapi" id="summernote" cols="30" rows="10">{!!$ds->terapi!!}</textarea>
                                                   </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="submit" class="btn btn-secondary" >Simpan</button>
+
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                      </form>  
                                       </div>
                                     </div>
                                   </div>
@@ -235,15 +201,11 @@
                   </tbody>
               
                 </table>
-              </div>
-         </div>
-         
-        </div>  
-
- 
-
-
+              </div>     
+         </div>  
       </section>   
+
+</div>  
 
 
 @endsection

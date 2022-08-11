@@ -60,6 +60,8 @@
 @include('layouts/side_kapus')
 @elseif(Session::get('level') == '3')
 @include('layouts/side_dokter')
+@elseif(Session::get('level') == '4')
+@include('layouts/side_apoteker')
 @endif
 {{-- endsidebar --}}
 
@@ -167,6 +169,12 @@
       $('.btn[data-filter]').removeClass('active');
       $(this).addClass('active');
     });
+  })
+</script>
+<script>
+    $(function () {
+    $('#summernote').summernote()
+    $('[data-toggle="tooltip"]').tooltip()
   })
 </script>
 </html>
