@@ -63,7 +63,7 @@
                                 <td><a data-toggle="modal" data-target="#modalDiagnosa-{{$ds->id}}" class="btn btn-default">Lihat diagnosa</a></td>
 
                                 <td>
-                                  <a href="{{url('/dashboard/rekam/edit/'.$ds->id.'')}}" class="btn btn-warning">Ubah</a>
+                                  {{-- <a href="{{url('/dashboard/rekam/edit/'.$ds->id.'')}}" class="btn btn-warning">Ubah</a> --}}
                                   {{-- <a href="{{url('/dashboard/dokter/rekam/cetak/'.$ds->id.'')}}" class="btn btn-default">Cetak</a> --}}
                                   <a href="{{url('/dashboard/rekam/delete/'.$ds->id.'')}}" class="btn btn-danger">Hapus</a>
 
