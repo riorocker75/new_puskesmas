@@ -51,6 +51,7 @@ class AptkCtrl extends Controller
         Diagnosa::where('id',$id)->update([
             'terapi'=> $request->terapi
         ]);
+            return redirect('/dashboard/apoteker')->with('alert-success','success');
 
 
     }

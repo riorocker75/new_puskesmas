@@ -76,7 +76,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
         <li class="nav-item">
-            <a href="{{url('/dashboard/dokter/diagnosis')}}" class="nav-link">
+            <a href="{{url('/dashboard/dokter')}}" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Diagnosis Pasien
