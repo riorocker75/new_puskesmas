@@ -156,19 +156,27 @@ class AdminCtrl extends Controller
     }
     function pasien_delete($id){
         $pasien=Pasien::where('id',$id)->first();
-        $rekam=RekamMedis::where('no_rm',$pasien->no_rm)->first();
-        $diagnosa=Diagnosa::where('kode_rekam',$rekam->kode_rekam)->first();
-
-        $r_count=RekamMedis::where('no_rm',$pasien->no_rm)->count();
-        $d_count=Diagnosa::where('kode_rekam',$rekam->kode_rekam)->count();
-
-               if($r_count > 0){
-                   RekamMedis::where('no_rm',$rekam->no_rm)->delete();
-               }
-               if($d_count > 0){
-                   Diagnosa::where('kode_rekam',$diagnosa->kode_rekam)->delete();
-               }
+      
+        
+        $nr=RekamMedis::count();
+                if($nr > 0){
+                    $rekam=RekamMedis::where('no_rm',$pasien->no_rm)->first();
+                    $r_count=RekamMedis::where('no_rm',$pasien->no_rm)->count();
+                    if($r_count > 0){  
+                       RekamMedis::where('no_rm',$rekam->no_rm)->delete();
+                   }
+                }
                
+         $dr=Diagnosa::count();  
+                if($dr > 0){
+                    $diagnosa=Diagnosa::where('kode_rekam',$rekam->kode_rekam)->first();
+                     $d_count=Diagnosa::where('kode_rekam',$rekam->kode_rekam)->count();
+                    if($d_count > 0){
+                           Diagnosa::where('kode_rekam',$diagnosa->kode_rekam)->delete();
+                       }   
+                }
+              
+
                Pasien::where('id',$id)->delete();
         return redirect('/')->with('alert-success','Data Berhasil terhapus');  
     }
