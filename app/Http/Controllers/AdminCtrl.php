@@ -159,7 +159,7 @@ class AdminCtrl extends Controller
         $rekam=RekamMedis::where('no_rm',$pasien->no_rm)->first();
         $diagnosa=Diagnosa::where('kode_rekam',$rekam->kode_rekam)->first();
                
-               Rekam::where('no_rm',$rekam->no_rm)->delete();
+               RekamMedis::where('no_rm',$rekam->no_rm)->delete();
                Diagnosa::where('kode_rekam',$diagnosa->kode_rekam)->delete();
                Pasien::where('id',$id)->delete();
         return redirect('/')->with('alert-success','Data Berhasil terhapus');  
